@@ -1,4 +1,4 @@
-package com.tambunan;
+package com.tambunan.exhaustive;
 
 import java.util.ArrayList;
 

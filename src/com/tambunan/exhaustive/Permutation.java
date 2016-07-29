@@ -1,4 +1,4 @@
-package com.tambunan;
+package com.tambunan.exhaustive;
 
 /**
  * Created by Welly on 7/29/2016.

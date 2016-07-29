@@ -1,4 +1,4 @@
-package com.company;
+package com.tambunan;
 
 /**
  * Created by Welly on 7/29/2016.

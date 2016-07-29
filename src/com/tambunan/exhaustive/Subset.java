@@ -12,8 +12,8 @@ public class Subset {
 
         if (start >= nums.length) return (target == 0);
 
-        return groupSum(start+1, nums, target - nums[start]) ||
-                groupSum(start+1, nums, target);
+        return groupSum(start + 1, nums, target - nums[start]) ||
+                groupSum(start + 1, nums, target);
     }
 
     public int howMany(int start, int[] nums, int target) {
@@ -23,27 +23,27 @@ public class Subset {
 
         if (start >= nums.length) return 0;
 
-        return howMany(start+1, nums, target - nums[start]) +
-                howMany(start+1, nums, target);
+        return howMany(start + 1, nums, target - nums[start]) +
+                howMany(start + 1, nums, target);
     }
 
     static int[] set = {1, 2, 3, 4, 5};
 
     public static void main(String[] args) {
-        int n=set.length;
+        int n = set.length;
 
-        for (int i=0; i < (1<<n); i++) {
-            ArrayList<Integer> subset=new ArrayList<Integer>();
+        for (int i = 0; i < (1 << n); i++) {
+            ArrayList<Integer> subset = new ArrayList<Integer>();
 
-            for (int j=0; j < n; j++) {
-                if ((i & (1<<j)) > 0)
+            for (int j = 0; j < n; j++) {
+                if ((i & (1 << j)) > 0)
                     subset.add(set[j]); // process
             }
 
             // perform an action over the subset, here just print it
-            System.out.print("Subset "+i+":");
-            for (int k=0; k<subset.size(); k++)
-                System.out.print(" "+subset.get(k));
+            System.out.print("Subset " + i + ":");
+            for (int k = 0; k < subset.size(); k++)
+                System.out.print(" " + subset.get(k));
             System.out.println();
         }
     }

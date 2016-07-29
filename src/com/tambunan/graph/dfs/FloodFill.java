@@ -16,9 +16,9 @@ public class FloodFill {
     private static final int DFS_BLACK = 1;
 
     private static int numComp;
-    private static Vector <Vector<IntegerPair>> AdjList =
-            new Vector < Vector < IntegerPair > >();
-    private static Vector < Integer > dfs_num;
+    private static Vector<Vector<IntegerPair>> AdjList =
+            new Vector<Vector<IntegerPair>>();
+    private static Vector<Integer> dfs_num;
 
     private static void printThis(String message) {
         System.out.printf("==================================\n");
@@ -30,14 +30,14 @@ public class FloodFill {
         dfs_num.set(u, color); // not just a generic DFS_BLACK
         Iterator it = AdjList.get(u).iterator();
         while (it.hasNext()) { // try all neighbors v of vertex u
-            IntegerPair v = (IntegerPair)it.next();
+            IntegerPair v = (IntegerPair) it.next();
             if (dfs_num.get(v.first()) == DFS_WHITE) // avoid cycle
                 floodfill(v.first(), color); // v is a (edge, weight) pair
         }
     }
 
     private static void initDFS(int V) { // used in normal DFS
-        dfs_num = new Vector < Integer > ();
+        dfs_num = new Vector<Integer>();
         dfs_num.addAll(Collections.nCopies(V, DFS_WHITE));
         numComp = 0;
     }
@@ -51,7 +51,7 @@ public class FloodFill {
         V = sc.nextInt();
         AdjList.clear();
         for (i = 0; i < V; i++) {
-            Vector< IntegerPair > Neighbor = new Vector < IntegerPair >(); // create vector of pair<int, int>
+            Vector<IntegerPair> Neighbor = new Vector<IntegerPair>(); // create vector of pair<int, int>
             AdjList.add(Neighbor); // store blank vector first
         }
 

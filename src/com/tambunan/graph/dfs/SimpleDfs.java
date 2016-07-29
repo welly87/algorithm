@@ -10,14 +10,14 @@ import java.util.Vector;
 /**
  * Created by Welly on 7/29/2016.
  */
-public class SimpleDfs  {
+public class SimpleDfs {
     private static final int DFS_WHITE = -1; // normal DFS
     private static final int DFS_BLACK = 1;
 
     private static int numComp;
-    private static Vector < Vector <IntegerPair> > AdjList =
-            new Vector < Vector < IntegerPair > >();
-    private static Vector < Integer > dfs_num;
+    private static Vector<Vector<IntegerPair>> AdjList =
+            new Vector<Vector<IntegerPair>>();
+    private static Vector<Integer> dfs_num;
 
     private static void printThis(String message) {
         System.out.printf("==================================\n");
@@ -26,7 +26,7 @@ public class SimpleDfs  {
     }
 
     private static void initDFS(int V) { // used in normal DFS
-        dfs_num = new Vector < Integer > ();
+        dfs_num = new Vector<Integer>();
         dfs_num.addAll(Collections.nCopies(V, DFS_WHITE));
         numComp = 0;
     }
@@ -36,13 +36,13 @@ public class SimpleDfs  {
 
         dfs_num.set(u, DFS_BLACK); // mark as visited
 
-        for (IntegerPair v: AdjList.get(u)) {
+        for (IntegerPair v : AdjList.get(u)) {
             if (dfs_num.get(v.first()) == DFS_WHITE) // avoid cycle
                 dfs(v.first()); // v is a (neighbor, weight) pair
         }
     }
 
-    public static void main(String[] args)  throws Exception  {
+    public static void main(String[] args) throws Exception {
         int i, j, V, total_neighbors, id, weight;
 
         File f = new File("in_01.txt");
@@ -51,7 +51,7 @@ public class SimpleDfs  {
         V = sc.nextInt();
         AdjList.clear();
         for (i = 0; i < V; i++) {
-            Vector< IntegerPair > Neighbor = new Vector < IntegerPair >(); // create vector of pair<int, int>
+            Vector<IntegerPair> Neighbor = new Vector<IntegerPair>(); // create vector of pair<int, int>
             AdjList.add(Neighbor); // store blank vector first
         }
 

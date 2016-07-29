@@ -11,26 +11,26 @@ import java.util.*;
 public class ArticulationPointAndBridge {
     private static final int DFS_WHITE = -1; // normal DFS
     private static final int DFS_BLACK = 1;
-    private static Vector < Boolean > articulation_vertex, visited;
-    private static Stack< Integer > S; // additional information for SCC
-    private static Vector < Integer > topologicalSort; // additional information for toposort
+    private static Vector<Boolean> articulation_vertex, visited;
+    private static Stack<Integer> S; // additional information for SCC
+    private static Vector<Integer> topologicalSort; // additional information for toposort
     private static int numComp, dfsNumberCounter, dfsRoot, rootChildren;
-    private static Vector < Integer > dfs_num, dfs_low, dfs_parent;
-    private static Vector < Vector <IntegerPair> > AdjList =
-            new Vector < Vector < IntegerPair > >();
+    private static Vector<Integer> dfs_num, dfs_low, dfs_parent;
+    private static Vector<Vector<IntegerPair>> AdjList =
+            new Vector<Vector<IntegerPair>>();
 
     private static void initGraphCheck(int V) {
         initDFS(V);
-        dfs_parent = new Vector < Integer > ();
+        dfs_parent = new Vector<Integer>();
         dfs_parent.addAll(Collections.nCopies(V, 0));
         numComp = 0;
     }
 
     private static void initArticulationPointBridge(int V) {
         initGraphCheck(V);
-        dfs_low = new Vector < Integer > ();
+        dfs_low = new Vector<Integer>();
         dfs_low.addAll(Collections.nCopies(V, 0));
-        articulation_vertex = new Vector < Boolean > ();
+        articulation_vertex = new Vector<Boolean>();
         articulation_vertex.addAll(Collections.nCopies(V, false));
         dfsNumberCounter = 0;
     }
@@ -42,7 +42,7 @@ public class ArticulationPointAndBridge {
     }
 
     private static void initDFS(int V) { // used in normal DFS
-        dfs_num = new Vector < Integer > ();
+        dfs_num = new Vector<Integer>();
         dfs_num.addAll(Collections.nCopies(V, DFS_WHITE));
         numComp = 0;
     }
@@ -53,7 +53,7 @@ public class ArticulationPointAndBridge {
         dfs_num.set(u, dfsNumberCounter++); // dfs_low[u] <= dfs_num[u]
         Iterator it = AdjList.get(u).iterator();
         while (it.hasNext()) { // try all neighbors v of vertex u
-            IntegerPair v = (IntegerPair)it.next();
+            IntegerPair v = (IntegerPair) it.next();
             if (dfs_num.get(v.first()) == DFS_WHITE) { // a tree edge
                 dfs_parent.set(v.first(), u); // parent of this children is me
                 if (u == dfsRoot) // special case
@@ -64,13 +64,12 @@ public class ArticulationPointAndBridge {
                 if (dfs_low.get(v.first()) > dfs_num.get(u)) // for bridge
                     System.out.printf(" Edge (%d, %d) is a bridge\n", u, v.first());
                 dfs_low.set(u, Math.min(dfs_low.get(u), dfs_low.get(v.first()))); // update dfs_low[u]
-            }
-            else if (v.first() != dfs_parent.get(u)) // a back edge and not direct cycle
+            } else if (v.first() != dfs_parent.get(u)) // a back edge and not direct cycle
                 dfs_low.set(u, Math.min(dfs_low.get(u), dfs_num.get(v.first()))); // update dfs_low[u]
         }
     }
 
-    public static void main(String[] args)  throws Exception  {
+    public static void main(String[] args) throws Exception {
         int i, j, V, total_neighbors, id, weight;
 
         File f = new File("in_01.txt");
@@ -79,7 +78,7 @@ public class ArticulationPointAndBridge {
         V = sc.nextInt();
         AdjList.clear();
         for (i = 0; i < V; i++) {
-            Vector< IntegerPair > Neighbor = new Vector < IntegerPair >(); // create vector of pair<int, int>
+            Vector<IntegerPair> Neighbor = new Vector<IntegerPair>(); // create vector of pair<int, int>
             AdjList.add(Neighbor); // store blank vector first
         }
 
@@ -97,7 +96,8 @@ public class ArticulationPointAndBridge {
         System.out.printf("Bridges:\n");
         for (i = 0; i < V; i++)
             if (dfs_num.get(i) == DFS_WHITE) {
-                dfsRoot = i; rootChildren = 0;
+                dfsRoot = i;
+                rootChildren = 0;
                 articulationPointAndBridge(i);
                 articulation_vertex.set(dfsRoot, (rootChildren > 1)); // special case
             }

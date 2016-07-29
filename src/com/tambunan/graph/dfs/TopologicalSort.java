@@ -14,11 +14,11 @@ import java.util.Vector;
 public class TopologicalSort {
     private static final int DFS_WHITE = -1; // normal DFS
     private static final int DFS_BLACK = 1;
-    private static Vector < Integer > topologicalSort; // additional information for toposort
+    private static Vector<Integer> topologicalSort; // additional information for toposort
     private static int numComp;
-    private static Vector < Vector <IntegerPair> > AdjList =
-            new Vector < Vector < IntegerPair > >();
-    private static Vector < Integer > dfs_num;
+    private static Vector<Vector<IntegerPair>> AdjList =
+            new Vector<Vector<IntegerPair>>();
+    private static Vector<Integer> dfs_num;
 
     private static void printThis(String message) {
         System.out.printf("==================================\n");
@@ -27,28 +27,28 @@ public class TopologicalSort {
     }
 
     private static void initDFS(int V) { // used in normal DFS
-        dfs_num = new Vector < Integer > ();
+        dfs_num = new Vector<Integer>();
         dfs_num.addAll(Collections.nCopies(V, DFS_WHITE));
         numComp = 0;
     }
 
     private static void initTopologicalSort(int V) {
         initDFS(V);
-        topologicalSort = new Vector < Integer > ();
+        topologicalSort = new Vector<Integer>();
     }
 
     private static void topoVisit(int u) {
         dfs_num.set(u, DFS_BLACK);
         Iterator it = AdjList.get(u).iterator();
         while (it.hasNext()) {
-            IntegerPair v = (IntegerPair)it.next();
+            IntegerPair v = (IntegerPair) it.next();
             if (dfs_num.get(v.first()) == DFS_WHITE)
                 topoVisit(v.first());
         }
         topologicalSort.add(u);
     }
 
-    public static void main(String[] args)  throws Exception  {
+    public static void main(String[] args) throws Exception {
         int i, j, V, total_neighbors, id, weight;
 
         File f = new File("in_01.txt");
@@ -57,7 +57,7 @@ public class TopologicalSort {
         V = sc.nextInt();
         AdjList.clear();
         for (i = 0; i < V; i++) {
-            Vector< IntegerPair > Neighbor = new Vector < IntegerPair >(); // create vector of pair<int, int>
+            Vector<IntegerPair> Neighbor = new Vector<IntegerPair>(); // create vector of pair<int, int>
             AdjList.add(Neighbor); // store blank vector first
         }
 

@@ -18,20 +18,20 @@ public class GraphCheck {
     private static final int DFS_GRAY = 2;
 
     private static int numComp;
-    private static Vector < Vector <IntegerPair> > AdjList =
-            new Vector < Vector < IntegerPair > >();
+    private static Vector<Vector<IntegerPair>> AdjList =
+            new Vector<Vector<IntegerPair>>();
 
-    private static Vector < Integer > dfs_num, dfs_low, dfs_parent;
+    private static Vector<Integer> dfs_num, dfs_low, dfs_parent;
 
     private static void initGraphCheck(int V) {
         initDFS(V);
-        dfs_parent = new Vector < Integer > ();
+        dfs_parent = new Vector<Integer>();
         dfs_parent.addAll(Collections.nCopies(V, 0));
         numComp = 0;
     }
 
     private static void initDFS(int V) { // used in normal DFS
-        dfs_num = new Vector < Integer > ();
+        dfs_num = new Vector<Integer>();
         dfs_num.addAll(Collections.nCopies(V, DFS_WHITE));
         numComp = 0;
     }
@@ -46,19 +46,17 @@ public class GraphCheck {
         dfs_num.set(u, DFS_GRAY); // color this as DFS_GRAY (temporary)
         Iterator it = AdjList.get(u).iterator();
         while (it.hasNext()) { // traverse this AdjList
-            IntegerPair v = (IntegerPair)it.next();
+            IntegerPair v = (IntegerPair) it.next();
             if (dfs_num.get(v.first()) == DFS_WHITE) { // DFS_GRAY to DFS_WHITE
                 // System.out.printf("  Tree Edge (%d, %d)\n", u, v.first());
                 dfs_parent.set(v.first(), u); // parent of this children is me
                 graphCheck(v.first());
-            }
-            else if (dfs_num.get(v.first()) == DFS_GRAY) { // DFS_GRAY to DFS_GRAY
+            } else if (dfs_num.get(v.first()) == DFS_GRAY) { // DFS_GRAY to DFS_GRAY
                 if (v.first() == dfs_parent.get(u))
                     System.out.printf(" Bidirectional Edge (%d, %d) - (%d, %d)\n", u, v.first(), v.first(), u);
                 else
                     System.out.printf(" Back Edge (%d, %d) (Cycle)\n", u, v.first());
-            }
-            else if (dfs_num.get(v.first()) == DFS_BLACK) // DFS_GRAY to DFS_BLACK
+            } else if (dfs_num.get(v.first()) == DFS_BLACK) // DFS_GRAY to DFS_BLACK
                 System.out.printf(" Forward/Cross Edge (%d, %d)\n", u, v.first());
         }
         dfs_num.set(u, DFS_BLACK); // now color this as DFS_BLACK (DONE)
@@ -73,7 +71,7 @@ public class GraphCheck {
         V = sc.nextInt();
         AdjList.clear();
         for (i = 0; i < V; i++) {
-            Vector< IntegerPair > Neighbor = new Vector < IntegerPair >(); // create vector of pair<int, int>
+            Vector<IntegerPair> Neighbor = new Vector<IntegerPair>(); // create vector of pair<int, int>
             AdjList.add(Neighbor); // store blank vector first
         }
 

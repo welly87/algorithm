@@ -1,5 +1,7 @@
 package com.tambunan.graph.dfs;
 
+import com.tambunan.graph.IntegerPair;
+
 import java.io.File;
 import java.util.Collections;
 import java.util.Iterator;
@@ -14,7 +16,7 @@ public class TopologicalSort {
     private static final int DFS_BLACK = 1;
     private static Vector < Integer > topologicalSort; // additional information for toposort
     private static int numComp;
-    private static Vector < Vector < IntegerPair > > AdjList =
+    private static Vector < Vector <IntegerPair> > AdjList =
             new Vector < Vector < IntegerPair > >();
     private static Vector < Integer > dfs_num;
 

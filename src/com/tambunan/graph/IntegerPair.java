@@ -1,6 +1,6 @@
-package com.tambunan.graph.dfs;
+package com.tambunan.graph;
 
-class IntegerPair implements Comparable {
+public class IntegerPair implements Comparable {
   Integer _first, _second;
 
   public IntegerPair(Integer f, Integer s) {
@@ -15,6 +15,6 @@ class IntegerPair implements Comparable {
       return this.second() - ((IntegerPair)o).second();
   }
 
-  Integer first() { return _first; }
-  Integer second() { return _second; }
+  public Integer first() { return _first; }
+  public Integer second() { return _second; }
 }

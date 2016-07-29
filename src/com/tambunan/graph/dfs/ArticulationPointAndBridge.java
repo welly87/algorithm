@@ -1,5 +1,7 @@
 package com.tambunan.graph.dfs;
 
+import com.tambunan.graph.IntegerPair;
+
 import java.io.File;
 import java.util.*;
 
@@ -14,7 +16,7 @@ public class ArticulationPointAndBridge {
     private static Vector < Integer > topologicalSort; // additional information for toposort
     private static int numComp, dfsNumberCounter, dfsRoot, rootChildren;
     private static Vector < Integer > dfs_num, dfs_low, dfs_parent;
-    private static Vector < Vector < IntegerPair > > AdjList =
+    private static Vector < Vector <IntegerPair> > AdjList =
             new Vector < Vector < IntegerPair > >();
 
     private static void initGraphCheck(int V) {

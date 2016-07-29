@@ -1,8 +1,9 @@
 package com.tambunan.graph.dfs;
 
+import com.tambunan.graph.IntegerPair;
+
 import java.io.File;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -14,7 +15,7 @@ public class SimpleDfs  {
     private static final int DFS_BLACK = 1;
 
     private static int numComp;
-    private static Vector < Vector < IntegerPair > > AdjList =
+    private static Vector < Vector <IntegerPair> > AdjList =
             new Vector < Vector < IntegerPair > >();
     private static Vector < Integer > dfs_num;
 

@@ -1,5 +1,7 @@
 package com.tambunan.graph.dfs;
 
+import com.tambunan.graph.IntegerPair;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Collections;
@@ -16,7 +18,7 @@ public class GraphCheck {
     private static final int DFS_GRAY = 2;
 
     private static int numComp;
-    private static Vector < Vector < IntegerPair > > AdjList =
+    private static Vector < Vector <IntegerPair> > AdjList =
             new Vector < Vector < IntegerPair > >();
 
     private static Vector < Integer > dfs_num, dfs_low, dfs_parent;

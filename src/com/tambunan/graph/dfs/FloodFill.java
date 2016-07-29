@@ -12,6 +12,7 @@ import java.util.Vector;
  * Created by Welly on 7/29/2016.
  */
 public class FloodFill {
+
     private static final int DFS_WHITE = -1; // normal DFS
     private static final int DFS_BLACK = 1;
 

@@ -50,7 +50,80 @@ class LongestIncreasingSubsequence {
     }
 }
 
+class LongestIncreasingSub {
+    int[] A = new int[]{-7, 10, 9, 2, 3, 8, 8, 1};
+    int[] memo = new int[8];
+
+    public LongestIncreasingSub() {
+        for (int i = 0; i < memo.length; i++)
+            memo[i] = -1;
+    }
+
+    public int longest() {
+        int max = -1;
+        for (int i = 0; i < memo.length; i++) {
+            max = Math.max(LIS(i), max);
+        }
+
+        return max;
+    }
+
+    public int LIS(int i) {
+        if (i == 0) return 1;
+
+        if (memo[i] != -1) return memo[i];
+
+        int max = -1;
+
+        for (int j = 0; j < i; j++) {
+            if (A[j] < A[i]) {
+                max = Math.max(max, LIS(j) + 1);
+            }
+        }
+
+        return memo[i] = max;
+    }
+}
+
+class LongestDecreasingSub {
+    int[] A = new int[]{-7, 10, 9, 2, 3, 8, 8, 1};
+    int[] memo = new int[8];
+
+    public LongestDecreasingSub() {
+        for (int i = 0; i < memo.length; i++)
+            memo[i] = -1;
+
+        memo[0] = 1;
+    }
+
+    public int longest() {
+        int max = -1;
+        for (int i = 0; i < memo.length; i++) {
+            max = Math.max(LDS(i), max);
+        }
+
+        return max;
+    }
+
+    public int LDS(int i) {
+        if (i == 0) return 1;
+
+        if (memo[i] != -1) return memo[i];
+
+        int max = 1;
+
+        for (int j = 0; j < i; j++) {
+            if (A[j] > A[i]) {
+                max = Math.max(max, LDS(j) + 1);
+            }
+        }
+
+        return memo[i] = max;
+    }
+}
+
 class ch3_06_LIS {
+
 
     public static void main(String[] args) {
         final int MAX_N = 100000;
@@ -58,8 +131,13 @@ class ch3_06_LIS {
         int n = 11;
         int[] A = new int[]{-7, 10, 9, 2, 3, 8, 8, 1, 2, 3, 4};
 
-        LongestIncreasingSubsequence a = new LongestIncreasingSubsequence();
+//        LongestIncreasingSubsequence a = new LongestIncreasingSubsequence();
+//
+//        System.out.printf("Final LIS is of length %d: ", a.solve(A).length);
 
-        System.out.printf("Final LIS is of length %d: ", a.solve(A).length);
+        System.out.println(new LongestIncreasingSub().LIS(5));
+        System.out.println(new LongestDecreasingSub().longest());
+
+        System.out.println(new LongestDecreasingSub().LDS(1));
     }
 }

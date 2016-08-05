@@ -13,7 +13,8 @@ public class SimpleDfs {
     private static final int DFS_BLACK = 1;
 
     private static int numComp;
-    private static Vector<Vector<Integer>> AdjList = new Vector<Vector<Integer>>();
+    private static Vector<Integer>[] AdjList = null;
+
     private static int[] dfs_num;
 
     private static void printThis(String message) {
@@ -32,10 +33,11 @@ public class SimpleDfs {
     }
 
     private static void initializeAdjList(int V) {
-        AdjList.clear();
+        AdjList = (Vector<Integer>[]) new Vector[V];
+
         for (int i = 0; i < V; i++) {
             Vector<Integer> neighbor = new Vector<Integer>();
-            AdjList.add(neighbor); // store blank vector first
+            AdjList[i] = neighbor; // store blank vector first
         }
     }
 
@@ -44,7 +46,7 @@ public class SimpleDfs {
 
         dfs_num[u] = DFS_BLACK; // mark as visited
 
-        for (Integer v : AdjList.get(u)) {
+        for (Integer v : AdjList[u]) {
             if (dfs_num[v] == DFS_WHITE) // avoid cycle
                 dfs(v); // v is a (neighbor, weight) pair
         }
@@ -64,7 +66,7 @@ public class SimpleDfs {
             for (int j = 0; j < total_neighbors; j++) {
                 int id = sc.nextInt();
                 int weight = sc.nextInt();
-                AdjList.get(i).add(id);
+                AdjList[i].add(id);
             }
         }
 

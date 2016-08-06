@@ -3,6 +3,23 @@ package com.tambunan.dp;
 /**
  * Created by Welly on 8/6/2016.
  */
+class KnapsackCombos {
+    int[] C;
+
+    public int solve(int[] C, int m) {
+        this.C = C;
+
+        return combos(this.C.length, m);
+    }
+
+    public int combos(int i, int m) {
+        if (m == 0) return 1; // empty knapsack, we arrived at target
+        if (i == 0) return 0; // we exhaust all combination
+        if (C[i] > m) return combos(i - 1, m); // don't take this item
+        else return combos(i - 1, m) + combos(i - 1, m - C[i]);
+    }
+}
+
 class Knapsack01BottomUp {
     int[][] picks = new int[10000][10000];
 
@@ -96,5 +113,7 @@ public class Knapsack01 {
 
         Knapsack01BottomUp b = new Knapsack01BottomUp();
         System.out.println(b.solve(W, V, S));
+
+
     }
 }

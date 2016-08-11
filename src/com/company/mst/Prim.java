@@ -1,4 +1,4 @@
-package company.mst;
+package com.company.mst;
 
 import java.util.ArrayList;
 import java.util.Arrays;

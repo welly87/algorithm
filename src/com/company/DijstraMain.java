@@ -1,7 +1,4 @@
-package company;
-
-import com.company.mst.Kruskal;
-import com.company.mst.Prim;
+package com.company;
 
 import java.io.File;
 import java.util.Scanner;
@@ -9,31 +6,23 @@ import java.util.Scanner;
 /**
  * Created by Welly on 8/9/2016.
  */
-public class MSTTest {
-
-
+public class DijstraMain {
     public static void main(String[] args) throws Exception {
-
-
-        File f = new File("in_03.txt");
+        File f = new File("in_05.txt");
         Scanner sc = new Scanner(f);
-
         int V = sc.nextInt();
         int E = sc.nextInt();
+        int source = sc.nextInt();
 
-        Kruskal k = new Kruskal(V, E);
-        Prim p = new Prim(V, E);
+        ShortestPathDijsktra dj = new ShortestPathDijsktra(V);
 
         for (int i = 0; i < E; i++) {
             int u = sc.nextInt();
             int v = sc.nextInt();
             int w = sc.nextInt();
-
-            k.addEdge(w, u, v);
-            p.addEdge(u, v, w);
+            dj.addEdge(u, v, w);
         }
 
-        System.out.println(k.calcMST());
-        System.out.println(p.calcMST());
+        dj.calcSp(source);
     }
 }

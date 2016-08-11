@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * Created by Welly on 8/8/2016.
  */
-public class Uva10004 {
+public class Uva10004_bipartite {
     static ArrayList<Integer>[] AdjList;
     static int[] color;
     static boolean isBipartite;

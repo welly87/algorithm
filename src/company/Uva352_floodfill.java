@@ -2,7 +2,7 @@ package company;
 
 import java.util.Scanner;
 
-public class Uva352 {
+public class Uva352_floodfill {
 
     static int m;
     static char[][] map;

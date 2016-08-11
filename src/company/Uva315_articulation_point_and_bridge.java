@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * Created by Welly on 8/8/2016.
  */
-public class Uva315 {
+public class Uva315_articulation_point_and_bridge {
     static ArrayList<Integer>[] AdjList;
     static final int UNVISITED = 1;
     static int dfsNumberCounter = 0;

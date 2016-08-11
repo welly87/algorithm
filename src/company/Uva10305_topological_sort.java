@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * Created by Welly on 8/8/2016.
  */
-public class Uva10305 {
+public class Uva10305_topological_sort {
 
     private static ArrayList<Integer>[] AdjList;
     private static boolean[] visited;

@@ -11,7 +11,6 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class Kruskal {
-    static Vector<Vector<IntegerPair>> AdjList = new Vector<Vector<IntegerPair>>();
 
     public static void main(String[] args) throws Exception {
         int V, E, u, v, w;
@@ -22,11 +21,6 @@ public class Kruskal {
         V = sc.nextInt();
         E = sc.nextInt();
 
-        AdjList.clear();
-        for (int i = 0; i < V; i++) {
-            Vector<IntegerPair> Neighbor = new Vector<IntegerPair>(); // create vector of pair<int, int>
-            AdjList.add(Neighbor); // store blank vector first
-        }
         Vector<IntegerTriple> EdgeList = new Vector<IntegerTriple>();
 
         // sort by edge weight O(E log E)
